@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/weebquery/static/css/main.5f361e03.chunk.css",
+    "main.js": "/weebquery/static/js/main.305bb7a1.chunk.js",
+    "main.js.map": "/weebquery/static/js/main.305bb7a1.chunk.js.map",
+    "runtime-main.js": "/weebquery/static/js/runtime-main.ea0621b8.js",
+    "runtime-main.js.map": "/weebquery/static/js/runtime-main.ea0621b8.js.map",
+    "static/js/2.d0d14088.chunk.js": "/weebquery/static/js/2.d0d14088.chunk.js",
+    "static/js/2.d0d14088.chunk.js.map": "/weebquery/static/js/2.d0d14088.chunk.js.map",
+    "index.html": "/weebquery/index.html",
+    "precache-manifest.b9d2ce300c2a36774fdb918ac9700880.js": "/weebquery/precache-manifest.b9d2ce300c2a36774fdb918ac9700880.js",
+    "service-worker.js": "/weebquery/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/weebquery/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.d0d14088.chunk.js.LICENSE.txt": "/weebquery/static/js/2.d0d14088.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ea0621b8.js",
+    "static/js/2.d0d14088.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.305bb7a1.chunk.js"
+  ]
+}
