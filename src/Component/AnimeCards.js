@@ -3,7 +3,9 @@ import {
     Card, CardContent, Typography, makeStyles,
     Grid, CardMedia, CardActionArea, Box
 } from '@material-ui/core'
-import * as Vibrant from 'node-vibrant'
+import LazyLoad from 'react-lazy-load'
+import './AnimeCards.css'
+// import * as Vibrant from 'node-vibrant'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -34,18 +36,18 @@ const useStyles = makeStyles((theme) => ({
 //     // const color = colorTheif.getColor(newImg);
 //     console.log(newImg);
 // }
-let color;
+// let color;
 
 
-function getVibrant(img) {
-    Vibrant.from("https://cors-anywhere.herokuapp.com/" + img).getPalette()
-        .then((palette) => {
-            color = palette.Vibrant.getHex();
-            // console.log(color);
-        })
-        .catch(error => console.log(error));
-    // return console.log(vibrantColor);
-}
+// function getVibrant(img) {
+//     Vibrant.from("https://cors-anywhere.herokuapp.com/" + img).getPalette()
+//         .then((palette) => {
+//             color = palette.Vibrant.getHex();
+//             // console.log(color);
+//         })
+//         .catch(error => console.log(error));
+//     // return console.log(vibrantColor);
+// }
 
 export default function AnimeCards(props) {
     const data = props.data;
@@ -53,27 +55,28 @@ export default function AnimeCards(props) {
     const img = data.attributes.posterImage.small;
     return (
         <div className={styles.root}>
-            {getVibrant(img)}
             <Box display="flex" justifyContent="center">
                 <Grid item xs>
                     <Card className={styles.cardWidth}>
                         <CardActionArea>
                             <div >
-                                <CardMedia
-                                    className={styles.media}
-                                    image={img}
-                                    title={data.attributes.canonicalTitle}
-                                />
+                                <LazyLoad>
+                                    <CardMedia
+                                        className={styles.media}
+                                        image={img}
+                                        title={data.attributes.canonicalTitle}
+                                    />
+                                </LazyLoad>
                                 <Box display="flex" justifyContent="center" alignItems="center">
-                                    {/* <CardContent
+                                    <CardContent
                                         className={styles.animeName}
-                                        
+
                                     >
-                                        <Typography variant="caption">
+                                        <Typography variant="caption" className='animeName'>
                                             <strong>{data.attributes.titles.en_jp}</strong> <br /> ({data.attributes.titles.ja_jp})
                                         </Typography>
-                                    </CardContent> */}
-                                    <div style={{
+                                    </CardContent>
+                                    {/* <div style={{
                                         backgroundColor: color
                                     }}>
                                     
@@ -81,7 +84,7 @@ export default function AnimeCards(props) {
                                             <strong>{data.attributes.titles.en_jp}</strong>
                                             <br /> ({data.attributes.titles.ja_jp})
                                         </h4>
-                                    </div>
+                                    </div> */}
                                 </Box>
                             </div>
                         </CardActionArea>
