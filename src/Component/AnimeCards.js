@@ -3,7 +3,6 @@ import {
     Card, CardContent, Typography, makeStyles,
     Grid, CardMedia, CardActionArea, Box
 } from '@material-ui/core'
-import ColorTheif from 'colorthief'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -15,13 +14,14 @@ const useStyles = makeStyles((theme) => ({
         minWidth: 150,
         maxWidth: 400,
         // height: theme.spacing(20),
-        margin: theme.spacing(2),
+        // margin: theme.spacing(1),
     },
     media: {
         height: 250,
+        maxWidth: 400,
     },
     animeName: {
-        maxWidth: 400,
+        maxWidth: 300,//Very important for responsive behaviour
     }
 }));
 
@@ -43,7 +43,7 @@ export default function AnimeCards(props) {
             <Box display="flex" justifyContent="center">
                 <Grid item xs>
                     <Card className={styles.cardWidth}>
-                        <CardActionArea>
+                        <CardActionArea >
                             <div >
                                 <CardMedia
                                     className={styles.media}
@@ -57,7 +57,6 @@ export default function AnimeCards(props) {
                                         >
                                             <strong>{data.attributes.titles.en_jp}</strong> <br /> ({data.attributes.titles.ja_jp})
                                         </Typography>
-                                        {/* {getDomColor(img)} */}
                                     </CardContent>
                                 </Box>
                             </div>
