@@ -16,7 +16,7 @@ export default function Header() {
             <CssBaseline>
                 <AppBar position="static" className="appBarCustom">
                     <Toolbar className={styles.toolbar} >
-                        <Typography align="center">
+                        <Typography align="center" className="weebquuery-name">
                             <strong>WeebQuery</strong>
                         </Typography>
                     </Toolbar>

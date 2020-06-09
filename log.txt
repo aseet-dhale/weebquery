@@ -1,3 +1,5 @@
 #06/09/2020
 
 Tried using Vibrant.js for vibrant color. Had issues. Will try locally first.
+Used Vibrant.js but getting difficulty in using it to dynamically color the card.
+Will try using Class Component instead of Functional Component for async dynamic coloring.
