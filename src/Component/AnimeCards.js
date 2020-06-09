@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     },
     animeName: {
         maxWidth: 300,//Very important for responsive behaviour
+        textAlign: "center",
     }
 }));
 
@@ -43,18 +44,16 @@ export default function AnimeCards(props) {
             <Box display="flex" justifyContent="center">
                 <Grid item xs>
                     <Card className={styles.cardWidth}>
-                        <CardActionArea >
+                        <CardActionArea>
                             <div >
                                 <CardMedia
                                     className={styles.media}
                                     image={img}
                                     title={data.attributes.canonicalTitle}
                                 />
-                                <Box display="flex" justifyContent="center">
+                                <Box display="flex" justifyContent="center" alignItems="center">
                                     <CardContent className={styles.animeName}>
-                                        <Typography
-                                            variant="caption"
-                                        >
+                                        <Typography variant="caption">
                                             <strong>{data.attributes.titles.en_jp}</strong> <br /> ({data.attributes.titles.ja_jp})
                                         </Typography>
                                     </CardContent>
