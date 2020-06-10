@@ -76,7 +76,7 @@ class Api extends Component {
     showData() {
         // console.log(this.state.data)
         const data = this.state.data;
-        const list = data.map((element) => <AnimeCards key={element.id} data={element} />)
+        const list = data.map((element) => <AnimeCards loading key={element.id} data={element} />)
         return list
     }
 

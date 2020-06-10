@@ -8,3 +8,5 @@ Will try using Class Component instead of Functional Component for async dynamic
 
 Successfully implemented dynamic coloring of cards without using class component.
 Instead changed the color by using the promise from Vibrant.js and applying the id to the element.
+
+Tried react-spring for animation. Feels like its a long way to go. Will try again later.

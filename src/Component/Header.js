@@ -16,7 +16,7 @@ export default function Header() {
             <CssBaseline>
                 <AppBar position="static" className="appBarCustom">
                     <Toolbar className={styles.toolbar} >
-                        <Button>
+                        <Button onClick ={() => window.location.reload()}>
                             <Typography align="center" className="weebquuery-name" variant="h6">
                                 <strong>WeebQuery</strong>
                             </Typography>

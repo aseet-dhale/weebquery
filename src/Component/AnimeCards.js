@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import {
     Card, CardContent, Typography, makeStyles,
     Grid, CardMedia, CardActionArea, Box
 } from '@material-ui/core'
-// import LazyLoad from 'react-lazy-load'
 import './AnimeCards.css'
 import * as Vibrant from 'node-vibrant'
+import { useChain, animated, useSpring, config, useTransition } from 'react-spring'
+import CardDetail from './CardDetail'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,9 +33,11 @@ const useStyles = makeStyles((theme) => ({
 function getVibrant(img, data) {
     Vibrant.from("https://cors-anywhere.herokuapp.com/" + img).getPalette()
         .then((palette) => {
-            // document.getElementById('card_'+data.id).style.background = 'linear-gradient('+ palette.Vibrant.getHex()+ ',' + palette.LightVibrant.getHex() + ' 0.5%)'; 
-            document.getElementById('card_'+data.id).style.backgroundColor = palette.Vibrant.getHex(); 
-            document.getElementById('animeName'+data.id).style.color = palette.Vibrant.getBodyTextColor(); 
+            if (document.getElementById('card_' + data.id) != null && document.getElementById('animeName' + data.id) != null)
+                document.getElementById('card_' + data.id).style.background = 'radial-gradient(' + palette.Vibrant.getHex() + ',' + palette.DarkVibrant.getHex() + ')';
+            // document.getElementById('card_'+data.id).style.backgroundColor = palette.Vibrant.getHex(); 
+            document.getElementById('animeName' + data.id).style.color = palette.Vibrant.getBodyTextColor();
+            // document.getElementById('animeName'+data.id).style.backgroundColor = palette.Vibrant.getBodyTextColor(); 
         })
         .catch(error => console.log(error));
 }
@@ -48,13 +51,42 @@ export default function AnimeCards(props) {
     const data = props.data;
     const styles = useStyles();
     const img = data.attributes.posterImage.small;
+    /*
+        Trying card opening
+    */
+    // const [open, set] = useState(false)
+    // const springRef = useRef()
+    // const { size, opacity, ...rest } = useSpring({
+    //     ref: springRef,
+    //     config: config.stiff,
+    //     from: { size: '20% !important', background: 'hotpink !important' },
+    //     to: { size: open ? '100% !important' : '20% !important', background: open ? 'white !important' : 'hotpink !important' }
+    // })
+    // const transRef = useRef()
+    // const transitions = useTransition(open ? data : data, {
+    //     ref: transRef,
+    //     unique: true,
+    //     trail: 400,
+    //     from: { opacity: 0, transform: 'scale(0)' },
+    //     enter: { opacity: 1, transform: 'scale(1)' },
+    //     leave: { opacity: 0, transform: 'scale(0)' }
+    // })
+    // This will orchestrate the two animations above, comment the last arg and it creates a sequence
+    // useChain(open ? [springRef, transRef] : [transRef, springRef], [0, open ? 0.1 : 0.6])
+
+    /*
+    Ends Here
+    */
+
 
     return (
         <div className={styles.root}>
             <Box display="flex" justifyContent="center">
                 <Grid item xs>
                     <Card className={styles.cardWidth} id={'card_' + data.id}>
-                        <CardActionArea>
+                        <CardActionArea
+                        // onClick={() => set(open => !open)}
+                        >
                             <div>
                                 <CardMedia
                                     className={styles.media}
@@ -69,12 +101,13 @@ export default function AnimeCards(props) {
                                     <CardContent
                                         className={styles.animeName}
                                     >
-                                        <Typography variant="caption" className='animeName' id={'animeName'+data.id} color="inherit">
+                                        <Typography variant="caption" className='animeName' id={'animeName' + data.id} color="inherit">
                                             <strong>{data.attributes.titles.en_jp}</strong> <br /> ({data.attributes.titles.ja_jp})
                                         </Typography>
                                     </CardContent>
                                 </Box>
                             </div>
+                
                         </CardActionArea>
                     </Card>
                 </Grid>
