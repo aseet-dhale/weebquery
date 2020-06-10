@@ -3,9 +3,9 @@ import {
     Card, CardContent, Typography, makeStyles,
     Grid, CardMedia, CardActionArea, Box
 } from '@material-ui/core'
-import LazyLoad from 'react-lazy-load'
+// import LazyLoad from 'react-lazy-load'
 import './AnimeCards.css'
-// import * as Vibrant from 'node-vibrant'
+import * as Vibrant from 'node-vibrant'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -29,69 +29,57 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-// const getDomColor = (img) => {
-//     const re = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g;
-//     let newImg = re.exec(img)[0];
-//     // const colorTheif = new ColorTheif();
-//     // const color = colorTheif.getColor(newImg);
-//     console.log(newImg);
-// }
-// let color;
+function getVibrant(img, data) {
+    Vibrant.from("https://cors-anywhere.herokuapp.com/" + img).getPalette()
+        .then((palette) => {
+            // document.getElementById('card_'+data.id).style.background = 'linear-gradient('+ palette.Vibrant.getHex()+ ',' + palette.LightVibrant.getHex() + ' 0.5%)'; 
+            document.getElementById('card_'+data.id).style.backgroundColor = palette.Vibrant.getHex(); 
+            document.getElementById('animeName'+data.id).style.color = palette.Vibrant.getBodyTextColor(); 
+        })
+        .catch(error => console.log(error));
+}
 
-
-// function getVibrant(img) {
-//     Vibrant.from("https://cors-anywhere.herokuapp.com/" + img).getPalette()
-//         .then((palette) => {
-//             color = palette.Vibrant.getHex();
-//             // console.log(color);
-//         })
-//         .catch(error => console.log(error));
-//     // return console.log(vibrantColor);
-// }
+function setColor(data) {
+    // document.getElementById('card_' + data.id).style.backgroundColor = color;
+    console.log(document.getElementById('card_' + data.id))
+}
 
 export default function AnimeCards(props) {
     const data = props.data;
     const styles = useStyles();
     const img = data.attributes.posterImage.small;
+
     return (
         <div className={styles.root}>
             <Box display="flex" justifyContent="center">
                 <Grid item xs>
-                    <Card className={styles.cardWidth}>
+                    <Card className={styles.cardWidth} id={'card_' + data.id}>
                         <CardActionArea>
-                            <div >
-                                <LazyLoad>
-                                    <CardMedia
-                                        className={styles.media}
-                                        image={img}
-                                        title={data.attributes.canonicalTitle}
-                                    />
-                                </LazyLoad>
-                                <Box display="flex" justifyContent="center" alignItems="center">
+                            <div>
+                                <CardMedia
+                                    className={styles.media}
+                                    image={img}
+                                    title={data.attributes.canonicalTitle}
+                                />
+                                <Box
+                                    display="flex"
+                                    justifyContent="center"
+                                    alignItems="center"
+                                >
                                     <CardContent
                                         className={styles.animeName}
-
                                     >
-                                        <Typography variant="caption" className='animeName'>
+                                        <Typography variant="caption" className='animeName' id={'animeName'+data.id} color="inherit">
                                             <strong>{data.attributes.titles.en_jp}</strong> <br /> ({data.attributes.titles.ja_jp})
                                         </Typography>
                                     </CardContent>
-                                    {/* <div style={{
-                                        backgroundColor: color
-                                    }}>
-                                    
-                                        <h4>
-                                            <strong>{data.attributes.titles.en_jp}</strong>
-                                            <br /> ({data.attributes.titles.ja_jp})
-                                        </h4>
-                                    </div> */}
                                 </Box>
                             </div>
                         </CardActionArea>
                     </Card>
                 </Grid>
             </Box>
-
+            {getVibrant(img, data)}
         </div>
     )
 }

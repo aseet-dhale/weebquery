@@ -1,5 +1,5 @@
 import React from 'react'
-import { Toolbar, AppBar, makeStyles, CssBaseline, Typography } from '@material-ui/core'
+import { Toolbar, AppBar, makeStyles, CssBaseline, Typography, Button } from '@material-ui/core'
 import './Header.css'
 
 const useStyles = makeStyles(theme => ({
@@ -16,9 +16,11 @@ export default function Header() {
             <CssBaseline>
                 <AppBar position="static" className="appBarCustom">
                     <Toolbar className={styles.toolbar} >
-                        <Typography align="center" className="weebquuery-name">
-                            <strong>WeebQuery</strong>
-                        </Typography>
+                        <Button>
+                            <Typography align="center" className="weebquuery-name" variant="h6">
+                                <strong>WeebQuery</strong>
+                            </Typography>
+                        </Button>
                     </Toolbar>
                 </AppBar>
             </CssBaseline>
