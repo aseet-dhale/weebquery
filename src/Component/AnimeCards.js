@@ -27,6 +27,10 @@ const useStyles = makeStyles((theme) => ({
     animeName: {
         maxWidth: 300,//Very important for responsive behaviour
         textAlign: "center",
+    },
+    contain:{
+        display: 'block',
+        overflow: 'hidden'
     }
 }));
 
@@ -103,6 +107,6 @@ export default function AnimeCards(props) {
                     </Card>
                 </Grid>
             </Box>
-        </div>) : (<CardDetail data={data} toggle={toggle} />)
+        </div>) : (<div className={styles.contain}><CardDetail data={data} toggle={toggle} /></div>)
     )
 }

@@ -41,7 +41,7 @@ export default function CountingAnimation(props) {
             <animated.div style={animation}>
                 {animation.value.interpolate(x => x.toFixed(precision))}
             </animated.div>
-            <animated.div style={lineAnim} className={style.line}></animated.div>
+            {/* <animated.div style={lineAnim} className={style.line}></animated.div> */}
         </>
     )
 }

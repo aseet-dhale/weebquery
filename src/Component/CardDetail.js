@@ -11,8 +11,6 @@ import CardContextDetail from './CardContextDetail';
 const useStyle = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-        width: '100vw',
-        height: '100vh',
     },
     images: {
         display: "flex",
@@ -40,8 +38,10 @@ const useStyle = makeStyles((theme) => ({
         position: 'absolute',
         left: 0,
         width: '100%',
-        zIndex: -999,
-        height: '100%',
+        minHeight: '100vh',
+        zIndex: 1,
+        display: 'block',
+        paddingBottom: theme.spacing(10)
     },
     coverImage: {
         position: "absolute",
@@ -59,11 +59,11 @@ const useStyle = makeStyles((theme) => ({
     }
 }));
 
-const setColors = (img,data) => {
+const setColors = (img, data) => {
     Vibrant.from('https://cors-anywhere.herokuapp.com/' + img).getPalette()
         .then((palette) => {
-            document.getElementById(`cards + ${data.id}`).style.backgroundColor = palette.DarkVibrant.getHex();
-            document.getElementById(`cardsTitle + ${data.id}`).style.color = palette.LightVibrant.getHex();
+            document.getElementById(`cards_${data.id}`).style.backgroundColor = palette.DarkVibrant.getHex();
+            document.getElementById(`cardsTitle_${data.id}`).style.color = palette.LightVibrant.getHex();
             // console.log(palette.Vibrant._rgb)
         })
         .catch(error => console.log(error));
@@ -78,20 +78,35 @@ export default function CardDetail(props) {
     try {
         cover = data.attributes.coverImage.original;
     } catch (error) {
-        cover = temp;   
+        cover = temp;
     }
     return (
-        <div className={styles.root} id={`cardsTitle + ${data.id}`} onLoad={setColors(img,data)}>
-            <div id={`cards + ${data.id}`} className={styles.cardColor}></div>
-            <div className={styles.images}>
-                <button className={styles.backButtonContainer} onClick={() => props.toggle()}>
-                    <ArrowBackIosIcon />
-                </button>
-                <img src={cover} alt="" className={styles.coverImage} />
-                <img src={img} alt="" className={styles.posterImage} />
-            </div>
-            <CardRatingDetail data={data} />
-            <CardContextDetail data={data} />
+        // <div className={styles.root} id={`cardsTitle + ${data.id}`} onLoad={setColors(img, data)}>
+        //     <div id={`cards + ${data.id}`} className={styles.cardColor}></div>
+        //     <div className={styles.images}>
+        //         <button className={styles.backButtonContainer} onClick={() => props.toggle()}>
+        //             <ArrowBackIosIcon />
+        //         </button>
+        //         <img src={cover} alt="" className={styles.coverImage} />
+        //         <img src={img} alt="" className={styles.posterImage} />
+        //     </div>
+        //     <CardRatingDetail data={data} />
+        //     <CardContextDetail data={data} />
+        // </div>
+        <div id={`cards_${data.id}`} className={styles.cardColor}>
+            <Container>
+                <div className={styles.root} id={`cardsTitle_${data.id}`} onLoad={setColors(img, data)}>
+                    <div className={styles.images}>
+                        <button className={styles.backButtonContainer} onClick={() => props.toggle()}>
+                            <ArrowBackIosIcon />
+                        </button>
+                        <img src={cover} alt="" className={styles.coverImage} />
+                        <img src={img} alt="" className={styles.posterImage} />
+                    </div>
+                    <CardRatingDetail data={data} />
+                    <CardContextDetail data={data} />
+                </div>
+            </Container>
         </div>
     )
 }
