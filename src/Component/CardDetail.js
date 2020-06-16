@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { makeStyles, Container, Box, Typography, IconButton } from '@material-ui/core';
-import { findAllByPlaceholderText } from '@testing-library/react';
+import { makeStyles, Container, } from '@material-ui/core';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import './AnimeCards.css'
 import temp from './blackCover.jpg'
@@ -73,26 +72,14 @@ const setColors = (img, data) => {
 export default function CardDetail(props) {
     const data = props.data;
     const styles = useStyle();
-    const img = data.attributes.posterImage.original;
+    const img = data.attributes.posterImage.small;
     let cover;
     try {
-        cover = data.attributes.coverImage.original;
+        cover = data.attributes.coverImage.small;
     } catch (error) {
         cover = temp;
     }
     return (
-        // <div className={styles.root} id={`cardsTitle + ${data.id}`} onLoad={setColors(img, data)}>
-        //     <div id={`cards + ${data.id}`} className={styles.cardColor}></div>
-        //     <div className={styles.images}>
-        //         <button className={styles.backButtonContainer} onClick={() => props.toggle()}>
-        //             <ArrowBackIosIcon />
-        //         </button>
-        //         <img src={cover} alt="" className={styles.coverImage} />
-        //         <img src={img} alt="" className={styles.posterImage} />
-        //     </div>
-        //     <CardRatingDetail data={data} />
-        //     <CardContextDetail data={data} />
-        // </div>
         <div id={`cards_${data.id}`} className={styles.cardColor}>
             <Container>
                 <div className={styles.root} id={`cardsTitle_${data.id}`} onLoad={setColors(img, data)}>

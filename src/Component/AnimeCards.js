@@ -28,12 +28,22 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: 300,//Very important for responsive behaviour
         textAlign: "center",
     },
-    contain:{
+    contain: {
         display: 'block',
-        overflow: 'hidden'
+        zIndex: 2,
+        top: 0,
+        left: 0,
+        width: "100%",
+        position: 'fixed',
     }
 }));
-
+const scrollToCard = (data) => {
+    if (document.getElementById(`completeCard_${data.id}`)) {
+        document.documentElement.scrollTop = document.getElementById(`completeCard_${data.id}`).offsetTop;
+        console.log(document.getElementById(`completeCard_${data.id}`).offsetTop)
+    }
+    console.log('called')
+}
 // function getVibrant(img, data) {
 
 // }
@@ -45,35 +55,6 @@ export default function AnimeCards(props) {
     function toggle() {
         set(open => !open);
     }
-    // const fadeIN = useSpring({ opacity: 1, from: { opacity: 0 } });
-    /*
-        Trying card opening
-    */
-    // const [open, set] = useState(false)
-    // const springRef = useRef()
-    // const { size, opacity, ...rest } = useSpring({
-    //     ref: springRef,
-    //     config: config.stiff,
-    //     from: { size: '20% !important', background: 'hotpink !important' },
-    //     to: { size: open ? '100% !important' : '20% !important', background: open ? 'white !important' : 'hotpink !important' }
-    // })
-    // const transRef = useRef()
-    // const transitions = useTransition(open ? data : data, {
-    //     ref: transRef,
-    //     unique: true,
-    //     trail: 400,
-    //     from: { opacity: 0, transform: 'scale(0)' },
-    //     enter: { opacity: 1, transform: 'scale(1)' },
-    //     leave: { opacity: 0, transform: 'scale(0)' }
-    // })
-    // This will orchestrate the two animations above, comment the last arg and it creates a sequence
-    // useChain(open ? [springRef, transRef] : [transRef, springRef], [0, open ? 0.1 : 0.6])
-
-    /*
-    Ends Here
-    */
-
-
     return (
         !open ? (<div className={styles.root}>
             <Box display="flex" justifyContent="center" >
@@ -107,6 +88,8 @@ export default function AnimeCards(props) {
                     </Card>
                 </Grid>
             </Box>
-        </div>) : (<div className={styles.contain}><CardDetail data={data} toggle={toggle} /></div>)
+        </div>) : (<div className={styles.contain} id={`completeCard_${data.id}`} onLoad={scrollToCard(data)}>
+            <CardDetail data={data} toggle={toggle}></CardDetail>
+        </div>)
     )
 }
