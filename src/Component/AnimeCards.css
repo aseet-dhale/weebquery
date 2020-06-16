@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
 
-.animeName{
+.animeName {
     font-family: 'Montserrat', sans-serif !important;
-    
+}
+
+.counters > div{
+    font-family: 'Montserrat', sans-serif !important;
 }

@@ -30,27 +30,18 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function getVibrant(img, data) {
-    Vibrant.from("https://cors-anywhere.herokuapp.com/" + img).getPalette()
-        .then((palette) => {
-            if (document.getElementById('card_' + data.id) != null && document.getElementById('animeName' + data.id) != null)
-                document.getElementById('card_' + data.id).style.background = 'radial-gradient(' + palette.Vibrant.getHex() + ',' + palette.DarkVibrant.getHex() + ')';
-            // document.getElementById('card_'+data.id).style.backgroundColor = palette.Vibrant.getHex(); 
-            document.getElementById('animeName' + data.id).style.color = palette.Vibrant.getBodyTextColor();
-            // document.getElementById('animeName'+data.id).style.backgroundColor = palette.Vibrant.getBodyTextColor(); 
-        })
-        .catch(error => console.log(error));
-}
+// function getVibrant(img, data) {
 
-function setColor(data) {
-    // document.getElementById('card_' + data.id).style.backgroundColor = color;
-    console.log(document.getElementById('card_' + data.id))
-}
-
+// }
 export default function AnimeCards(props) {
     const data = props.data;
     const styles = useStyles();
     const img = data.attributes.posterImage.small;
+    const [open, set] = useState(false);
+    function toggle() {
+        set(open => !open);
+    }
+    // const fadeIN = useSpring({ opacity: 1, from: { opacity: 0 } });
     /*
         Trying card opening
     */
@@ -80,12 +71,12 @@ export default function AnimeCards(props) {
 
 
     return (
-        <div className={styles.root}>
-            <Box display="flex" justifyContent="center">
+        !open ? (<div className={styles.root}>
+            <Box display="flex" justifyContent="center" >
                 <Grid item xs>
-                    <Card className={styles.cardWidth} id={'card_' + data.id}>
+                    <Card className={styles.cardWidth}>
                         <CardActionArea
-                        // onClick={() => set(open => !open)}
+                            onClick={() => toggle()}
                         >
                             <div>
                                 <CardMedia
@@ -101,18 +92,17 @@ export default function AnimeCards(props) {
                                     <CardContent
                                         className={styles.animeName}
                                     >
-                                        <Typography variant="caption" className='animeName' id={'animeName' + data.id} color="inherit">
+                                        <Typography variant="caption" className='animeName' color="inherit">
                                             <strong>{data.attributes.titles.en_jp}</strong> <br /> ({data.attributes.titles.ja_jp})
                                         </Typography>
                                     </CardContent>
                                 </Box>
                             </div>
-                
+
                         </CardActionArea>
                     </Card>
                 </Grid>
             </Box>
-            {getVibrant(img, data)}
-        </div>
+        </div>) : (<CardDetail data={data} toggle={toggle} />)
     )
 }
