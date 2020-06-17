@@ -59,7 +59,11 @@ const useStyle = makeStyles((theme) => ({
     }
 }));
 
-const setColors = (img, data) => {
+
+export default function CardDetail(props) {
+    const data = props.data;
+    const styles = useStyle();
+    const img = data.attributes.posterImage.small;
     Vibrant.from('https://cors-anywhere.herokuapp.com/' + img).getPalette()
         .then((palette) => {
             document.getElementById(`cards_${data.id}`).style.backgroundColor = palette.DarkVibrant.getHex();
@@ -67,13 +71,6 @@ const setColors = (img, data) => {
             // console.log(palette.Vibrant._rgb)
         })
         .catch(error => console.log(error));
-}
-
-
-export default function CardDetail(props) {
-    const data = props.data;
-    const styles = useStyle();
-    const img = data.attributes.posterImage.small;
     let cover;
     try {
         cover = data.attributes.coverImage.small;
@@ -83,7 +80,7 @@ export default function CardDetail(props) {
     return (
         <div id={`cards_${data.id}`} className={styles.cardColor}>
             <Container>
-                <div className={styles.root} id={`cardsTitle_${data.id}`} onLoad={setColors(img, data)}>
+                <div className={styles.root} id={`cardsTitle_${data.id}`} >
                     <div className={styles.images}>
                         <button className={styles.backButtonContainer} onClick={() => props.toggle()}>
                             <ArrowBackIosIcon />

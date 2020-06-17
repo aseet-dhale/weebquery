@@ -39,16 +39,7 @@ const useStyles = makeStyles((theme) => ({
         overflowY: 'scroll'
     }
 }));
-const scrollToCard = (data) => {
-    if (document.getElementById(`completeCard_${data.id}`)) {
-        document.documentElement.scrollTop = document.getElementById(`completeCard_${data.id}`).offsetTop;
-        console.log(document.getElementById(`completeCard_${data.id}`).offsetTop)
-    }
-    console.log('called')
-}
-// function getVibrant(img, data) {
 
-// }
 export default function AnimeCards(props) {
     const data = props.data;
     const styles = useStyles();
@@ -90,7 +81,7 @@ export default function AnimeCards(props) {
                     </Card>
                 </Grid>
             </Box>
-        </div>) : (<div className={styles.contain} id={`completeCard_${data.id}`} onLoad={scrollToCard(data)}>
+        </div>) : (<div className={styles.contain} id={`completeCard_${data.id}`}>
             <CardDetail data={data} toggle={toggle}></CardDetail>
         </div>)
     )
