@@ -40,7 +40,8 @@ const useStyle = makeStyles((theme) => ({
         minHeight: '100vh',
         zIndex: 1,
         display: 'block',
-        paddingBottom: theme.spacing(10)
+        paddingBottom: theme.spacing(5),
+        backgroundColor: 'white',
     },
     coverImage: {
         position: "absolute",
