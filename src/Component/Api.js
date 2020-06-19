@@ -9,7 +9,7 @@ import PageNavigation from './PageNavigation'
 class Api extends Component {
     pageOffset = 0;
     pageLimit = 20;
-    url = `https://kitsu.io/api/edge/anime/?page[limit]=${this.pageLimit}&page[offset]=${this.pageOffset}`;
+    url = `https://kitsu.io/api/edge/anime/?sort=ratingRank&page[limit]=${this.pageLimit}&page[offset]=${this.pageOffset}`;
 
     constructor(props) {
         super(props)
@@ -20,6 +20,9 @@ class Api extends Component {
         this.fetchData = this.fetchData.bind(this)
     }
 
+    updateUrl(){
+        return `https://kitsu.io/api/edge/anime/?sort=ratingRank&page[limit]=${this.pageLimit}&page[offset]=${this.pageOffset}`
+    }
 
     componentDidMount() {
         this.fetchData()
@@ -51,7 +54,7 @@ class Api extends Component {
         // console.log(this.pageOffset)
         if (this.pageOffset > 0) {
             this.pageOffset = this.pageOffset - this.pageLimit;
-            this.url = `https://kitsu.io/api/edge/anime/?page[limit]=${this.pageLimit}&page[offset]=${this.pageOffset}`;
+            this.url = this.updateUrl();
             this.fetchData()
             this.showData()
             this.scrollTop()
@@ -64,7 +67,7 @@ class Api extends Component {
         // console.log(this.pageOffset)
         if (this.pageOffset < 12000) {
             this.pageOffset = this.pageOffset + this.pageLimit;
-            this.url = `https://kitsu.io/api/edge/anime/?page[limit]=${this.pageLimit}&page[offset]=${this.pageOffset}`;
+            this.url = this.updateUrl();
             this.fetchData()
             this.showData()
             this.scrollTop()

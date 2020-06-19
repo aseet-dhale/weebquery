@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { makeStyles, Container, } from '@material-ui/core';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import './AnimeCards.css'
-import temp from './blackCover.jpg'
+import temp from './back.png'
 import * as Vibrant from 'node-vibrant'
 import CardRatingDetail from './CardRatingDetail';
 import CardContextDetail from './CardContextDetail';
@@ -68,7 +68,7 @@ export default function CardDetail(props) {
         .then((palette) => {
             document.getElementById(`cards_${data.id}`).style.backgroundColor = palette.DarkVibrant.getHex();
             document.getElementById(`cardsTitle_${data.id}`).style.color = palette.LightVibrant.getHex();
-            // console.log(palette.Vibrant._rgb)
+            
         })
         .catch(error => console.log(error));
     let cover;
