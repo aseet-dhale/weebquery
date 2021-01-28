@@ -12,7 +12,7 @@
     "node-vibrant": "^3.1.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-lazy-load": "^3.0.13",
+    "react-lazy-load": "^3.1.13",
     "react-scripts": "3.4.1",
     "react-spring": "^8.0.27"
   },
