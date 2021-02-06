@@ -10,9 +10,9 @@
     "@testing-library/user-event": "^7.2.1",
     "colorthief": "^2.3.0",
     "node-vibrant": "^3.1.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-lazy-load": "^3.1.13",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-lazy-load": "^3.0.13",
     "react-scripts": "3.4.1",
     "react-spring": "^8.0.27"
   },
