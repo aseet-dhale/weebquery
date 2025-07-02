@@ -3,8 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/icons": "^4.11.2",
-    "@material-ui/lab": "^4.0.0-alpha.57",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^5.17.1",
+    "@mui/material": "^5.17.1",
+    "@mui/styles": "^5.17.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -39,7 +42,6 @@
     ]
   },
   "devDependencies": {
-    "@material-ui/core": "^4.12.4",
     "@vitejs/plugin-react": "^4.6.0",
     "axios": "^0.21.1",
     "gh-pages": "^3.1.0",

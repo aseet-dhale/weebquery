@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography } from "@material-ui/core";
+import { Typography } from "@mui/material";
 export default function CardContextDetail(props) {
     const data = props.data;
     const title_en_jp = data.attributes.titles.en_jp;

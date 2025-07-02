@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { makeStyles, Container, } from '@material-ui/core';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import { Container } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import './AnimeCards.css'
 import temp from './back.png'
 import * as Vibrant from 'node-vibrant'
