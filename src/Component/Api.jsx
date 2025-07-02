@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Box } from '@material-ui/core'
+import { Box } from '@mui/material'
 import AnimeCards from './AnimeCards'
 import PageNavigation from './PageNavigation'
 

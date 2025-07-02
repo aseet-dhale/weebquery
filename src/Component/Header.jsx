@@ -1,5 +1,6 @@
 import React from 'react'
-import { Toolbar, AppBar, makeStyles, CssBaseline, Typography, Button } from '@material-ui/core'
+import { Toolbar, AppBar, CssBaseline, Typography, Button } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import './Header.css'
 
 const useStyles = makeStyles(theme => ({

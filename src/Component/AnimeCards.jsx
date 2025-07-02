@@ -1,8 +1,6 @@
 import React, { useRef, useState } from 'react'
-import {
-    Card, CardContent, Typography, makeStyles,
-    Grid, CardMedia, CardActionArea, Box
-} from '@material-ui/core'
+import { Card, CardContent, Typography, Grid, CardMedia, CardActionArea, Box } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import './AnimeCards.css'
 import * as Vibrant from 'node-vibrant'
 import { useChain, animated, useSpring, config, useTransition } from 'react-spring'

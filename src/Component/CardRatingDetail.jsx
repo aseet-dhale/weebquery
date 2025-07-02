@@ -1,6 +1,6 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core';
-import CountingAnimation from './CountingAnimation.js';
+import makeStyles from '@mui/styles/makeStyles';
+import CountingAnimation from './CountingAnimation.jsx';
 import './AnimeCards.css'
 
 const useStyle = makeStyles((theme) => ({

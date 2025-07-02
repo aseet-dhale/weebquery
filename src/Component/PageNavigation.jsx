@@ -1,7 +1,8 @@
 import React from 'react'
-import { makeStyles, Box, IconButton } from '@material-ui/core'
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import { Box, IconButton } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -26,11 +27,11 @@ export default function (props) {
             <div className={styles.root}>
                 <Box display="flex" justifyContent="center">
                     <div className={styles.navWidth}>
-                        <IconButton onClick={()=>{props.previousPage()}}>
+                        <IconButton onClick={()=>{props.previousPage()}} size="large">
                             <ArrowBackIcon fontSize="large" color="secondary" />
                         </IconButton>
                         <strong>{Math.floor(props.currentPage/20) + 1}</strong>
-                        <IconButton onClick={()=>{props.nextPage()}}>
+                        <IconButton onClick={()=>{props.nextPage()}} size="large">
                             <ArrowForwardIcon fontSize="large" color="secondary" />
                         </IconButton>
                     </div>
@@ -38,6 +39,5 @@ export default function (props) {
             </div>
             <div className={styles.constSpace} />
         </div>
-
-    )
+    );
 }

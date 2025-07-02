@@ -3,24 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/icons": "^4.11.2",
-    "@material-ui/lab": "^4.0.0-alpha.57",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^5.17.1",
+    "@mui/material": "^5.17.1",
+    "@mui/styles": "^5.17.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "colorthief": "^2.3.2",
     "node-vibrant": "^3.1.6",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-lazy-load": "^3.1.13",
-    "react-scripts": "^3.4.4",
+    "react-scripts": "^5.0.1",
     "react-spring": "^8.0.27"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
@@ -40,9 +42,10 @@
     ]
   },
   "devDependencies": {
-    "@material-ui/core": "^4.11.3",
+    "@vitejs/plugin-react": "^4.6.0",
     "axios": "^0.21.1",
-    "gh-pages": "^3.1.0"
+    "gh-pages": "^3.1.0",
+    "vite": "^6.3.5"
   },
   "homepage": "https://aseet-dhale.github.io/weebquery/"
 }
