@@ -12,7 +12,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "colorthief": "^2.3.2",
-    "node-vibrant": "^3.1.6",
+    "node-vibrant": "^4.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-lazy-load": "^3.1.13",
