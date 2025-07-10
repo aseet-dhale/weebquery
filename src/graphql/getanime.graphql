@@ -1,0 +1,94 @@
+query GetAnime($id: Int) {
+  Media(id: $id, type: ANIME) {
+    id
+    title {
+      english
+      native
+      romaji
+    }
+    coverImage {
+      extraLarge
+    }
+    bannerImage
+    description(asHtml: false) # Changed to 'false' for easier rendering without HTML tags
+    # --- IMPORTANT ADDED FIELDS ---
+
+    type # Confirms it's ANIME (useful if the query was more generic)
+    format # E.g., TV, MOVIE, OVA, ONA, SPECIAL
+    status # E.g., FINISHED, RELEASING, NOT_YET_RELEASED, CANCELLED
+    episodes # Total number of episodes
+    duration # Duration per episode in minutes
+    startDate {
+      # When the anime started airing
+      year
+      month
+      day
+    }
+    endDate {
+      # When the anime finished airing
+      year
+      month
+      day
+    }
+    season # E.g., SPRING, SUMMER, FALL, WINTER
+    seasonYear # The year the season began
+    source # E.g., ORIGINAL, MANGA, LIGHT_NOVEL, VISUAL_NOVEL
+    genres # A list of genres (e.g., "Action", "Comedy", "Fantasy")
+    tags {
+      # More granular descriptive tags (e.g., "Mecha", "Isekai", "School")
+      id
+      name
+      category # E.g., "Demographics", "Themes"
+      rank # How relevant the tag is (higher is more relevant)
+      isMediaSpoiler # Whether the tag might spoil content
+    }
+
+    averageScore # Average user score (0-100)
+    popularity # Number of users who have added it to their list
+    favourites # Number of users who have favorited it
+    studios(isMain: true) {
+      # Main animation studios involved
+      nodes {
+        id
+        name
+      }
+    }
+
+    externalLinks {
+      # Links to streaming services, official websites, other databases
+      id
+      site # E.g., "Crunchyroll", "Funimation", "MyAnimeList"
+      url
+      type # E.g., "STREAMING", "INFO"
+      language # E.g., "ENGLISH", "JAPANESE"
+    }
+
+    trailer {
+      # Trailer information (e.g., YouTube)
+      id # YouTube video ID
+      site # "youtube"
+      thumbnail # URL to the trailer thumbnail
+    }
+
+    relations {
+      # Related anime/manga (sequels, prequels, adaptations)
+      edges {
+        relationType # E.g., SEQUEL, PREQUEL, ADAPTATION
+        node {
+          # Basic info about the related media
+          id
+          type
+          title {
+            romaji
+            english
+          }
+          coverImage {
+            medium
+          }
+        }
+      }
+    }
+
+    # --- END ADDED FIELDS ---
+  }
+}

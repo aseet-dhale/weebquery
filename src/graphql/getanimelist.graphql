@@ -1,0 +1,21 @@
+query GetAnimeList($page: Int, $sort: [MediaSort]) {
+  Page(page: $page, perPage: 20) {
+    pageInfo {
+      hasNextPage
+      currentPage
+      total
+    }
+    media(sort: $sort) {
+      id
+      title {
+        english
+        native
+        romaji
+      }
+      coverImage {
+        extraLarge
+      }
+      bannerImage
+    }
+  }
+}
