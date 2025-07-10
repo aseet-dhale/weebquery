@@ -4,10 +4,12 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import Error from "../components/Error";
 import AnimeCard from "../components/AnimeCard";
 import { Pagination, Stack } from "@mui/material";
-import { useState } from "react";
+import { useNavigate, useSearchParams } from "react-router";
 
 function HomePage() {
-  const [page, setPage] = useState<number>(1);
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const page = Number(searchParams.get("page")) ?? 2;
   const { loading, data, error } = useQuery(GetAnimeListDocument, {
     variables: {
       page: page,
@@ -16,7 +18,7 @@ function HomePage() {
   });
 
   const handleChange = (_event: React.ChangeEvent<unknown>, value: number) => {
-    setPage(value);
+    navigate(`/?page=${value}`);
   };
 
   if (loading) return <LoadingSpinner />;
